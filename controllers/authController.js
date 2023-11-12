@@ -141,6 +141,7 @@ export const logout = catchAsyncError(async (req, res, next) => {
     const options = {
         httpOnly: true,
         path: '/api',
+        expires: new Date(),
         sameSite: 'None',
         secure: true
     }
