@@ -15,12 +15,11 @@ const corsOptions = {
 };
 
 const app = express();
-
+app.use(cookieParser());
 app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
 app.use(fileUpload());
 
 app.get('/favicon.ico', (req, res) => res.status(204));
