@@ -6,7 +6,8 @@ const sendToken = (user, statusCode, res) => {
         httpOnly: true,
         path: '/api',
         sameSite: 'None',
-        secure: true // Thêm secure nếu sử dụng HTTPS
+        secure: true, // Thêm secure nếu sử dụng HTTPS,
+        domain: 'backend-shopit-phuong090802.vercel.app'
     }
 
     res.status(statusCode).cookie('token', token, options).json({

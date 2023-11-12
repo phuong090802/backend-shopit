@@ -142,7 +142,8 @@ export const logout = catchAsyncError(async (req, res, next) => {
         httpOnly: true,
         path: '/api',
         sameSite: 'None',
-        secure: true
+        secure: true,
+        domain: 'backend-shopit-phuong090802.vercel.app'
     }
     res.clearCookie('token', options);
     res.json({
