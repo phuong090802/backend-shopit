@@ -73,6 +73,19 @@ export const updateProfile = catchAsyncError(async (req, res, next) => {
         email: req.body.email
     }
 
+    if (req.body.avatar !== '') {
+        const user = await User.findById(req.user.id);
+        const image_id = user.avatar.public_id;
+        await cloudinary.uploader.destroy(image_id);
+
+        const result = await cloudinary.uploader
+        .upload(req.body.avatar, { folder: "avatars", width: 150, crop: "crop" });
+        newUserData.avatar = {
+            public_id: result.public_id,
+            url: result.secure_url
+        }
+    }
+
     // new: true: trả về user được cập nhật, mặc định là false trước khi cập nhật
     // runValidators: true: validation trước khi cập nhật dữ liệu
     // useFindAndModify: false: ngăn việc sử dụng findOneAndUpdate() thay vì findByIdAndUpdate() 
