@@ -1,4 +1,4 @@
-// import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import connectionDatabase from './config/dbConnect.js';
 import errorMiddleware from './middlewares/error.js';
 import app from './app.js';
@@ -11,7 +11,8 @@ process.on('uncaughtException', err => {
     process.exit(1);
 });
 
-// dotenv.config({ path: 'config/config.env' });
+dotenv.config();
+
 
 connectionDatabase();
 
