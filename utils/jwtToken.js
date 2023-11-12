@@ -1,5 +1,5 @@
 const sendToken = (user, statusCode, res) => {
-    const token = user.getJwtToken();
+    // const token = user.getJwtToken();
     const options = {
         // Date.now() trả về kiểu Number từ 1/1/1970
         expires: new Date(Date.now() + process.env.COOKIE_EXPIRES_TIME * 24 * 60 * 60 * 1000),
@@ -10,7 +10,7 @@ const sendToken = (user, statusCode, res) => {
         domain: 'backend-shopit-phuong090802.vercel.app'
     }
 
-    res.status(statusCode).cookie('token', token, options).json({
+    res.status(statusCode).cookie('token', null, options).json({
         success: true,
         user
     });
