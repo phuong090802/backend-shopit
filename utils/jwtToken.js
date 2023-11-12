@@ -8,10 +8,14 @@ const sendToken = (user, statusCode, res) => {
         path: '/api',
         secure: true // Thêm secure nếu sử dụng HTTPS
     }
+
+    console.log(token);
+    console.log(options);
     res.status(statusCode).cookie('token', token, options).json({
         success: true,
         user
     });
+
 }
 
 export default sendToken;
