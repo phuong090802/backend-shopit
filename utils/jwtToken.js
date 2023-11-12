@@ -9,8 +9,6 @@ const sendToken = (user, statusCode, res) => {
         secure: true // Thêm secure nếu sử dụng HTTPS
     }
 
-    console.log(token);
-    console.log(options);
     res.status(statusCode).cookie('token', token, options).json({
         success: true,
         user
