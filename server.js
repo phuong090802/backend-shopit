@@ -1,8 +1,9 @@
 import dotenv from 'dotenv';
-import connectionDatabase from './config/dbConnect.js';
+import dbConnect from './config/dbConnect.js';
 import errorMiddleware from './middlewares/error.js';
 import app from './app.js';
 import { v2 as cloudinary } from 'cloudinary';
+
 
 // bắt sự kiện uncaughtException
 process.on('uncaughtException', err => {
@@ -13,8 +14,7 @@ process.on('uncaughtException', err => {
 
 dotenv.config();
 
-
-connectionDatabase();
+await dbConnect();
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
