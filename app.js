@@ -5,10 +5,16 @@ import auth from './routes/auth.js';
 import order from './routes/order.js';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
-import cors from './middlewares/cors.js';
+import cors from 'cors';
 
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
-const app = express();
+const app = express(cors(corsOptions));
 
 app.use(cors);
 
