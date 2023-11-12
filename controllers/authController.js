@@ -141,9 +141,6 @@ export const logout = catchAsyncError(async (req, res, next) => {
     res.cookie('token', null, {
         expires: new Date(Date.now()),
         httpOnly: true,
-        path: '/api',
-        sameSite: 'None',
-        secure: true // Thêm secure nếu sử dụng HTTPS
     });
 
     res.json({
