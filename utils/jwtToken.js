@@ -6,6 +6,7 @@ const sendToken = (user, statusCode, res) => {
         expires: new Date(Date.now() + process.env.COOKIE_EXPIRES_TIME * 24 * 60 * 60 * 1000),
         httpOnly: true,
         path: '/api',
+        sameSite: 'None',
         secure: true // Thêm secure nếu sử dụng HTTPS
     }
 
