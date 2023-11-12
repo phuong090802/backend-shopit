@@ -140,10 +140,7 @@ export const forgotPassword = catchAsyncError(async (req, res, next) => {
 export const logout = catchAsyncError(async (req, res, next) => {
     const options = {
         httpOnly: true,
-        path: '/api',
-        sameSite: 'None',
-        secure: true,
-        domain: 'backend-shopit-phuong090802.vercel.app'
+      
     }
     res.clearCookie('token', options);
     res.json({
