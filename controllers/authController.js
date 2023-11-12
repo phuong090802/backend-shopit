@@ -138,7 +138,13 @@ export const forgotPassword = catchAsyncError(async (req, res, next) => {
 });
 
 export const logout = catchAsyncError(async (req, res, next) => {
-    res.clearCookie('token', { path: '/api' });
+    const options = {
+        httpOnly: true,
+        path: '/api',
+        sameSite: 'None',
+        secure: true
+    }
+    res.clearCookie('token', options);
     res.json({
         success: true,
         message: 'Logged out'
