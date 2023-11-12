@@ -157,25 +157,11 @@ export const logout = catchAsyncError(async (req, res, next) => {
     //     sameSite: 'None',
     //     secure: true
     // }
-    // res.clearCookie('token', options);
-    // res.json({
-    //     success: true,
-    //     message: 'Logged out'
-    // })
-    const options = {
-       
-        expires: new Date(1),
-        httpOnly: true,
-        path: '/api',
-        sameSite: 'None',
-        secure: true, // Thêm secure nếu sử dụng HTTPS,
-
-    }
-
-    res.cookie('token', '', options).json({
+    res.clearCookie('token');
+    res.json({
         success: true,
         message: 'Logged out'
-    });
+    })
 });
 
 export const allUsers = catchAsyncError(async (req, res, next) => {
