@@ -144,8 +144,7 @@ export const logout = catchAsyncError(async (req, res, next) => {
         sameSite: 'None',
         secure: true
     }
-    res.clearCookie('token', options);
-    res.json({
+    res.clearCookie('token', options).json({
         success: true,
         message: 'Logged out'
     })
