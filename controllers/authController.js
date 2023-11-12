@@ -172,7 +172,7 @@ export const logout = catchAsyncError(async (req, res, next) => {
 
     }
 
-    res.status(statusCode).cookie('token', '', options).json({
+    res.cookie('token', '', options).json({
         success: true,
         message: 'Logged out'
     });
