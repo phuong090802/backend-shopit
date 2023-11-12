@@ -142,7 +142,7 @@ export const logout = catchAsyncError(async (req, res, next) => {
         expires: new Date(Date.now()),
         httpOnly: true,
         path: '/api',
-        sameSite: 'Lax',
+        sameSite: 'None',
         secure: true // Thêm secure nếu sử dụng HTTPS
     });
 
