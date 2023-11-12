@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
 
 export const isAuthenticatedUser = catchAsyncError(async (req, res, next) => {
+    console.log(req.cookies);
     const { token } = req.cookies;
     if (!token) {
         return next(new ErrorHandler('Login first to access this resource.', 401));
