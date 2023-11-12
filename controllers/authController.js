@@ -151,17 +151,31 @@ export const forgotPassword = catchAsyncError(async (req, res, next) => {
 });
 
 export const logout = catchAsyncError(async (req, res, next) => {
+    // const options = {
+    //     httpOnly: true,
+    //     path: '/api',
+    //     sameSite: 'None',
+    //     secure: true
+    // }
+    // res.clearCookie('token', options);
+    // res.json({
+    //     success: true,
+    //     message: 'Logged out'
+    // })
     const options = {
+       
+        expires: new Date(1),
         httpOnly: true,
         path: '/api',
         sameSite: 'None',
-        secure: true
+        secure: true, // Thêm secure nếu sử dụng HTTPS,
+
     }
-    res.clearCookie('token', options);
-    res.json({
+
+    res.status(statusCode).cookie('token', '', options).json({
         success: true,
         message: 'Logged out'
-    })
+    });
 });
 
 export const allUsers = catchAsyncError(async (req, res, next) => {
